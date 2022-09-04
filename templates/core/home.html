@@ -1,0 +1,42 @@
+<!-- templates/index.html -->
+
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="mt-10 flex flex-col justify-center items-center ">
+    <div class="rounded-lg border border-gray-900 w-1/2 p-4">
+        <h1 style="font-family: Bahnschrift; font-size: 20px;" class=" mb-3 ">Task Manager</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="flex w-full">
+                <input hx-post="{% url 'check_title' %}" hx-target="#check_title" hx-trigger="keyup delay:1s"
+                    hx-swap="outerhtml" name="title" type="text" id="large-input"
+                    class="block w-3/4 text-gray-900 bg-gray-50 rounded-l-lg border border-gray-300 sm:text-md dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white ">
+
+                <button hx-post="{% url 'add_task' %}" hx-target="#task-list"
+                    class="w-44 bg-blue-700 rounded-r-lg text-md text-white" type="submit">Add Task</button>
+
+            </div>
+            <div class="" id="check_title">
+
+            </div>
+        </form>
+        <div class=" mt-10">
+
+            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <tbody id="task-list">
+
+                        {% include 'partials/task-list.html' %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content %}

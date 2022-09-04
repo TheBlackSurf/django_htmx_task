@@ -1,0 +1,8 @@
+<form action="">
+    {% csrf_token %}
+    <div class="div flex">
+        <input class="h-10" type="text" id="email" name="title" value="{{ task.title}}" required>
+        <button class="bg-blue-700 text-white h-10 px-5 rounded-r-lg" hx-post="{% url 'edit_task' task.id %}"
+            hx-target="#task-list">Aktualzuj</button>
+    </div>
+</form>

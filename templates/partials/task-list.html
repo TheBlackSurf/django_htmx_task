@@ -1,0 +1,16 @@
+{% for task in tasks %}
+
+<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+    <td class="py-4 px-6" id="tasktitle">
+        <p style="cursor: pointer" hx-put="{% url 'edit_task' task.id %}" hx-target="this">{{ task.title }}</p>
+    </td>
+
+    <td style="text-align: end" class="py-4 px-6 ">
+        <p style="cursor: pointer" hx-delete="{% url 'delete_task' task.id %}" hx-target="#task-list">Usuń</p>
+    </td>
+
+</tr>
+
+
+
+{% endfor %}
